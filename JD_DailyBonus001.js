@@ -1669,19 +1669,19 @@ function JingDongGetCash(s) {
             const cc = JSON.parse(data);
             const Details = LogDetails ? "response:\n" + data : '';
             if (cc.data.success && cc.data.result) {
-              console.log("\n" + "京东商城-现金签到成功 " + Details)
+              console.log("\n" + "京东商城-现金兑换成功 " + Details)
               merge.JDGetCash.success = 1
               merge.JDGetCash.Money = cc.data.result.signCash || 0
-              merge.JDGetCash.notify = `京东商城-现金: 成功, 明细: ${cc.data.result.signCash||`无`}现金 💰`
+              merge.JDGetCash.notify = `京东商城-现金兑换: 成功, 明细: ${cc.data.result.signCash||`无`}现金 💰`
             } else {
-              console.log("\n" + "京东商城-现金签到失败 " + Details)
+              console.log("\n" + "京东商城-现金兑换失败 " + Details)
               merge.JDGetCash.fail = 1
-              if (data.match(/\"bizCode\":201|已经签过/)) {
-                merge.JDGetCash.notify = "京东商城-现金: 失败, 原因: 已签过 ⚠️"
+              if (data.match(/\"bizCode\":416|已经签过/)) {
+                merge.JDGetCash.notify = "京东商城-现金兑换: 失败, 原因: 已签过 ⚠️"
               } else if (data.match(/\"code\":300|退出登录/)) {
-                merge.JDGetCash.notify = "京东商城-现金: 失败, 原因: Cookie失效‼️"
+                merge.JDGetCash.notify = "京东商城-现金兑换: 失败, 原因: Cookie失效‼️"
               } else {
-                merge.JDGetCash.notify = "京东商城-现金: 失败, 原因: 未知 ⚠️"
+                merge.JDGetCash.notify = "京东商城-现金兑换: 失败, 原因: 未知 ⚠️"
               }
             }
           }
