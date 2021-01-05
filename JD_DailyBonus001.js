@@ -107,11 +107,11 @@ async function all() {
   switch (stop) {
     case 0:
       await Promise.all([
-        JingDongCash(stop), //京东现金红包
+        JingDongGetCash(stop), //京东现金红包
       ]);
       break;
     default:
-      await JingDongCash(stop); //京东现金红包
+      await JingDongGetCash(stop); //京东现金红包
       break;
   }
   await Promise.all([
